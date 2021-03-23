@@ -1,0 +1,14 @@
+package NAI01;
+
+import javax.swing.*;
+
+public class Window {
+	
+	private JFrame Window;
+	
+	
+	public Window() {
+		Window = new JFrame("Start");
+	}
+	
+}

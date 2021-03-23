@@ -1,0 +1,27 @@
+package NAI01;
+
+import java.io.*;
+
+public class Main {
+	
+	public static void main(String[] args) {
+		
+		try {
+			FileReader fr = new FileReader("C:\\Users\\Fifi\\Desktop\\knn\\iris.csv");
+			StringReader sr = new StringReader("C:\\Users\\Fifi\\Desktop\\knn\\iris.csv");
+			
+			try {
+				System.out.println(sr.read());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		//new Window();
+	}
+}

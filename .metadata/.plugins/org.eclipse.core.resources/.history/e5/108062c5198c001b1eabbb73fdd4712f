@@ -1,0 +1,22 @@
+package NAI01;
+
+import java.awt.*;
+
+import javax.swing.*;
+
+public class Window {
+	
+	private JFrame Window;
+	
+	
+	public Window() {
+		Window = new JFrame("Start");
+		Window.setLayout(new BorderLayout());
+		
+		
+		
+		Window.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        Window.setVisible(true);
+	}
+	
+}

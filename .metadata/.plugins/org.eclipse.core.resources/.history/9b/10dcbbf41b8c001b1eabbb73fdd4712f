@@ -1,0 +1,31 @@
+package NAI01;
+
+import java.awt.*;
+
+import javax.swing.*;
+
+public class Window {
+	
+	JFrame Window;
+	JPanel panel;
+	
+	JButton button;
+	
+	
+	public Window() {
+		Window = new JFrame("Start");
+		Window.setLayout(new BorderLayout());
+		panel = new JPanel();
+		panel.setLayout(new FlowLayout());
+		button = new JButton("Ok");
+		
+		panel.add(button);
+		Window.add(panel,BorderLayout.CENTER);
+		Window.setSize(180,180);
+		
+		
+		Window.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        Window.setVisible(true);
+	}
+	
+}
