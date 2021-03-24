@@ -1,0 +1,140 @@
+package NAI01;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.StringTokenizer;
+
+public class Main {
+	
+	static String strTrain;
+	static String strTest;
+	
+	public static void main(String[] args) throws IOException {
+		
+		// wczytanie z plikow ================================
+		
+		try {
+			FileReader frTrain = new FileReader(args[0]);
+			FileReader frTest = new FileReader(args[1]);
+						
+			StringBuilder sbTrain = new StringBuilder();
+			StringBuilder sbTest = new StringBuilder();
+			
+			int a = 0;
+			while((a=frTrain.read())!=-1) {
+				sbTrain.append((char)a);
+			}
+			
+			frTrain.close();
+			strTrain = sbTrain.toString();
+			
+			// =============
+			
+			int b = 0;
+			while((b=frTest.read())!=-1) {
+				sbTest.append((char)b);
+			}
+			
+			frTest.close();
+			strTest = sbTest.toString();
+			
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		// wprowadzenie pomiarow zbioru treningowego ===================
+		
+		StringTokenizer stTrain = new StringTokenizer(strTrain);
+		ArrayList<String> linesTrain = new ArrayList<String>();
+		
+		while(stTrain.hasMoreTokens()) {
+			linesTrain.add(stTrain.nextToken().toString());
+		}
+		
+		ArrayList<Pomiar> pomiary = new ArrayList<Pomiar>();
+		
+		for(String lineTrain:linesTrain) {
+			String[] w = lineTrain.split(";");			
+			pomiary.add(new Pomiar(Double.parseDouble(w[0]),Double.parseDouble(w[1]),Double.parseDouble(w[2]),Double.parseDouble(w[3]),w[4]));
+		}
+		
+		for(Pomiar p:pomiary) {
+			p.wyswietlDane();
+		}
+		
+		// wprowadzenie pomiarow zbioru testowego =========================
+		
+		StringTokenizer stTest = new StringTokenizer(strTest);
+		ArrayList<String> linesTest = new ArrayList<String>();
+		
+		while(stTest.hasMoreTokens()) {
+			linesTest.add(stTest.nextToken().toString());
+		}
+		
+		ArrayList<Pomiar> daneTest = new ArrayList<Pomiar>();
+		
+		for(String lineTest:linesTest) {
+			String[] w = lineTest.split(";");			
+			daneTest.add(new Pomiar(Double.parseDouble(w[0]),Double.parseDouble(w[1]),Double.parseDouble(w[2]),Double.parseDouble(w[3]),w[4]));
+		}
+		
+		for(Pomiar p:daneTest) {
+			p.wyswietlDane();
+		}
+		
+		// ================================================================
+		
+		HashMap<Pomiar, Double> hm = new HashMap<>();
+		
+		double tab[] = {1.0,2.0,3.0,4.0};
+		for(Pomiar p:pomiary) {
+			double x = p.obliczOdlegloscKwadrat(tab[0],tab[1], tab[2], tab[3]);
+			hm.put(p, x);
+		}
+		
+		for(Pomiar p:pomiary) {
+			System.out.print(" : "+hm.get(p)+"   HM   ");
+			p.wyswietlDane();
+		}
+		Pomiar min =pomiary.get(0);
+		System.out.println(hm.get(min));	
+		
+		for(int i = 1;i<pomiary.size();i++) {
+			
+			double op = hm.get(pomiary.get(i));
+			double minX = hm.get(min);
+			if(op<minX) {
+				min = pomiary.get(i);
+			}
+		}
+		System.out.println(hm.get(min));
+		hm.remove(hm.get(min));
+		
+		min =pomiary.get(0);
+		System.out.println(hm.get(min));	
+		
+		for(int i = 1;i<pomiary.size();i++) {
+			
+			double op = hm.get(pomiary.get(i));
+			double minX = hm.get(min);
+			if(op<minX) {
+				min = pomiary.get(i);
+			}
+		}
+		System.out.println(hm.get(min));
+		hm.remove(hm.get(min));
+		
+		for(int i = 1;i<pomiary.size();i++) {
+			
+			double op = hm.get(pomiary.get(i));
+			double minX = hm.get(min);
+			if(op<minX) {
+				min = pomiary.get(i);
+			}
+		}
+		System.out.println(hm.get(min));
+		//new Window();
+	}
+}

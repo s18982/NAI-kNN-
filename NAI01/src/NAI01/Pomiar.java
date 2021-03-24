@@ -34,4 +34,15 @@ public class Pomiar {
 		public void wyswietlDane() {
 			System.out.println(this.dlLiscia+" : "+this.szerLiscia+" : "+this.dlPlatka+" : "+this.szerPlatka+" : "+this.gatunek);
 		}
+		
+		public double obliczOdlegloscKwadrat(double d1,double d2,double d3, double d4) {
+			double odlX1 = Math.abs(this.dlLiscia - d1);
+			double odlX2 = Math.abs(this.szerLiscia - d2);
+			double odlX3 = Math.abs(this.dlPlatka - d3);
+			double odlX4 = Math.abs(this.szerPlatka - d4);
+			
+			double suma = odlX1*odlX1 + odlX2*odlX2 + odlX3*odlX3 + odlX4*odlX4;
+			
+			return suma;
+		}
 }
