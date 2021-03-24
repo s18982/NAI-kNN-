@@ -1,0 +1,54 @@
+package NAI01;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+
+public class Main {
+	
+	static String txt;
+	
+	public static void main(String[] args) throws IOException {
+		
+		try {
+			FileReader fr = new FileReader("C:\\Users\\Fifi\\Desktop\\knn\\iris.csv");
+			StringReader sr = new StringReader("C:\\Users\\Fifi\\Desktop\\knn\\iris.csv");
+			
+			StringBuilder sb = new StringBuilder();
+			int c = 0;
+			while((c=fr.read())!=-1) {
+				sb.append((char)c);
+			}
+			fr.close();
+			
+			txt = sb.toString();
+			
+			//System.out.println(txt);
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		//System.out.println(txt);
+		
+		ArrayList<String> list = new ArrayList<String>();
+		StringTokenizer st = new StringTokenizer(txt);
+		
+		while(st.hasMoreTokens()) {
+			list.add(st.nextToken().toString());
+		}
+		
+		for(String line:list) {
+			StringTokenizer st1 = new StringTokenizer(line);
+			//st1.nextToken();
+			String[] w = line.split(";");
+			System.out.println(w[3]);
+		}
+		
+		txt.split("/n");
+		
+		
+		
+		//new Window();
+	}
+}
