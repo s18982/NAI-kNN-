@@ -61,6 +61,11 @@ public class Main {
 			String[] w = lineTrain.split(";");			
 			pomiary.add(new Pomiar(Double.parseDouble(w[0]),Double.parseDouble(w[1]),Double.parseDouble(w[2]),Double.parseDouble(w[3]),w[4]));
 		}
+		/*
+		for(Pomiar p:pomiary) {
+			p.wyswietlDane();
+		}*/
+		
 		// wprowadzenie pomiarow zbioru testowego =========================
 		
 		StringTokenizer stTest = new StringTokenizer(strTest);
@@ -75,21 +80,25 @@ public class Main {
 		for(String lineTest:linesTest) {
 			String[] w = lineTest.split(";");			
 			daneTest.add(new Pomiar(Double.parseDouble(w[0]),Double.parseDouble(w[1]),Double.parseDouble(w[2]),Double.parseDouble(w[3]),w[4]));
-		}		
+		}
 		
-		// Testy ================================================================
+		/*		
+		for(Pomiar p:daneTest) {
+			p.wyswietlDane();
+		}*/
+		
+		// ================================================================
+		double tab[] = {4.0,3.0,2.0,1.0};
 		
 		int z = 0;	
 		int dobreOdp = 0;
-		
 		for(Pomiar p: daneTest) {
 			double wek[] = {p.getDlLiscia(),p.getSzerLiscia(),p.getDlPlatka(),p.getSzerPlatka()};
 			
 			System.out.println(z+1+": "+jakiGatunek(wek,pomiary));
-			
-			if(jakiGatunek(wek,pomiary).equals(daneTest.get(z).getGatunek()))
-				dobreOdp++;			
-			
+			if(jakiGatunek(wek,pomiary).equals(daneTest.get(z).getGatunek())) {
+				dobreOdp++;
+			}
 			z++;
 		}
 		
@@ -137,7 +146,14 @@ public class Main {
 					pomiary.add(minPoms[i]);
 					hm.put(minPoms[i], minDoubles[i]);
 				}
-								
+				
+				// wyswietlenie najmniejszych odleglosci
+				/*
+				for(int i = 0; i<k; i++) {
+					System.out.print("Min"+i+": "+minDoubles[i]+" : ");
+					minPoms[i].wyswietlDane();
+				}*/
+				
 				// Okreslenie gatunku
 				
 				int counterSetosa = 0;
