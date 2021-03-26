@@ -88,42 +88,33 @@ public class Main {
 		}*/
 		
 		// ================================================================
-		double tab[] = {4.0,3.0,2.0,1.0};
 		
-		int z = 0;	
-		int dobreOdp = 0;
-		for(Pomiar p: daneTest) {
-			double wek[] = {p.getDlLiscia(),p.getSzerLiscia(),p.getDlPlatka(),p.getSzerPlatka()};
-			
-			System.out.println(z+1+": "+jakiGatunek(wek,pomiary));
-			if(jakiGatunek(wek,pomiary).equals(daneTest.get(z).getGatunek())) {
-				dobreOdp++;
-			}
-			z++;
-		}
-		
-		System.out.println("Skutecznosc: "+dobreOdp+"/"+daneTest.size());
-		
-	
-		
-		//new Window();*/
-	}
-	
-	
-	public static String jakiGatunek(double[] wektor, ArrayList<Pomiar> pomiary) {
 		HashMap<Pomiar, Double> hm = new HashMap<>();
 		
+		
+		double tab[] = {4.0,3.0,2.0,1.0}; // Podanie roboczego wektora
+		
+		
 		for(Pomiar p:pomiary) {
-			double x = p.obliczOdlegloscKwadrat(wektor[0],wektor[1], wektor[2], wektor[3]);
+			double x = p.obliczOdlegloscKwadrat(tab[0],tab[1], tab[2], tab[3]);
 			hm.put(p, x);
 		}
+		
+		/*
+		// wyswietlenie danych razem z wyliczona odlegloscia
+		for(Pomiar p:pomiary) {
+			System.out.print(" : "+hm.get(p)+"   HM   ");
+			p.wyswietlDane();
+		}
+		*/
+		
+		// Znajdowanie najmniejszych odleglosci od podanego wektora
 		
 		Pomiar min = pomiary.get(0);
 		
 		double minDoubles[] = new double[k];
 		Pomiar[] minPoms = new Pomiar[k];
 		
-
 		for(int j = 0;j<k; j++) {
 			min = pomiary.get(0);
 		for(int i = 1;i<pomiary.size();i++) {
@@ -133,6 +124,7 @@ public class Main {
 				min = pomiary.get(i);
 			}
 		}
+		
 		minDoubles[j] = hm.get(min);
 		minPoms[j] = min;
 		
@@ -142,53 +134,51 @@ public class Main {
 		}
 		
 		// Z powrotem dodaje do listy i hashmapy wyrzucone na moment elementy
-				for(int i = 0; i<k; i++) {
-					pomiary.add(minPoms[i]);
-					hm.put(minPoms[i], minDoubles[i]);
-				}
+		for(int i = 0; i<k; i++) {
+			pomiary.add(minPoms[i]);
+			hm.put(minPoms[i], minDoubles[i]);
+		}
+		
+		// wyswietlenie najmniejszych odleglosci
+		for(int i = 0; i<k; i++) {
+			System.out.print("Min"+i+": "+minDoubles[i]+" : ");
+			minPoms[i].wyswietlDane();
+		}
+		
+		// Okreslenie gatunku
+		
+		int counterSetosa = 0;
+		int counterVersicolor = 0;
+		int counterVirginica = 0;
+		
+		
+		for (int i = 0; i<minPoms.length; i++) {
+			switch(minPoms[i].getGatunek()) {
+				case "Iris-setosa":
+					counterSetosa++;
+					break;
+				case "Iris-versicolor":
+					counterVersicolor++;
+					break;
+				case "Iris-virginica":
+					counterVirginica++;
+					break;
+			
+			}
+		}
 				
-				// wyswietlenie najmniejszych odleglosci
-				/*
-				for(int i = 0; i<k; i++) {
-					System.out.print("Min"+i+": "+minDoubles[i]+" : ");
-					minPoms[i].wyswietlDane();
-				}*/
-				
-				// Okreslenie gatunku
-				
-				int counterSetosa = 0;
-				int counterVersicolor = 0;
-				int counterVirginica = 0;
-				
-				
-				for (int i = 0; i<minPoms.length; i++) {
-					switch(minPoms[i].getGatunek()) {
-						case "Iris-setosa":
-							counterSetosa++;
-							break;
-						case "Iris-versicolor":
-							counterVersicolor++;
-							break;
-						case "Iris-virginica":
-							counterVirginica++;
-							break;
-					
-					}
-				}
-						
-				if(counterSetosa>counterVersicolor && counterSetosa>counterVirginica) {
-					//System.out.println("Iris-setosa");
-					return "Iris-setosa";
+		if(counterSetosa>counterVersicolor && counterSetosa>counterVirginica) {
+			System.out.println("Iris-setosa");
+		}else
+			if(counterVersicolor>counterSetosa && counterVersicolor>counterVirginica){
+				System.out.println("Iris-versicolor");
+			}else
+				if(counterVirginica>counterSetosa && counterVersicolor<counterVirginica){
+					System.out.println("Iris-virginica");
 				}else
-					if(counterVersicolor>counterSetosa && counterVersicolor>counterVirginica){
-						//System.out.println("Iris-versicolor");
-						return "Iris-versicolor";
-					}else
-						if(counterVirginica>counterSetosa && counterVersicolor<counterVirginica){
-							//System.out.println("Iris-virginica");
-							return "Iris-virginica";
-						}else
-							//System.out.println("Nie mo¿na okreœliæ gatunku");
-							return "Nie mo¿na okreœliæ gatunku";
+					System.out.println("Nie mo¿na okreœliæ gatunku");
+		
+		
+		//new Window();*/
 	}
 }

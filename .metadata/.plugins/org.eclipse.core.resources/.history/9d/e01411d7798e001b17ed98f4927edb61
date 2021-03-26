@@ -96,7 +96,7 @@ public class Main {
 			double wek[] = {p.getDlLiscia(),p.getSzerLiscia(),p.getDlPlatka(),p.getSzerPlatka()};
 			
 			System.out.println(z+1+": "+jakiGatunek(wek,pomiary));
-			if(jakiGatunek(wek,pomiary).equals(daneTest.get(z).getGatunek())) {
+			if(jakiGatunek(wek,pomiary) == daneTest.get(z).getGatunek()) {
 				dobreOdp++;
 			}
 			z++;

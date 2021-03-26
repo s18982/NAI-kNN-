@@ -10,6 +10,6 @@
     <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_CLASSPATH_ONLY_JAR" value="false"/>
     <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="NAI01.Main"/>
     <stringAttribute key="org.eclipse.jdt.launching.MODULE_NAME" value="NAI01"/>
-    <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="C:\Users\Fifi\Desktop\knn\p1\NAI-kNN-\train-set.csv C:\Users\Fifi\Desktop\knn\p1\NAI-kNN-\test-set.csv 6"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="C:\Users\Fifi\Desktop\knn\p1\NAI-kNN-\train-set.csv C:\Users\Fifi\Desktop\knn\p1\NAI-kNN-\test-set.csv 5"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="NAI01"/>
 </launchConfiguration>
