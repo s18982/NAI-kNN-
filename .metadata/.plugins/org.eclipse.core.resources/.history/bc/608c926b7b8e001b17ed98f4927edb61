@@ -95,9 +95,9 @@ public class Main {
 		
 		System.out.println("Skutecznosc: "+dobreOdp+"/"+daneTest.size());
 		
-		double[] tab = {1.7,8.9,0.3,6.1};
+	
 		
-		new Window(jakiGatunek(tab,pomiary),"100");
+		//new Window();*/
 	}
 	
 	
@@ -173,6 +173,6 @@ public class Main {
 							return "Iris-virginica";
 						}else
 							//System.out.println("Nie mo¿na okreœliæ gatunku");
-							return "Nie mo¿na okreslic gatunku";
+							return "Nie mo¿na okreœliæ gatunku";
 	}
 }

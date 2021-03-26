@@ -97,7 +97,7 @@ public class Main {
 		
 		double[] tab = {1.7,8.9,0.3,6.1};
 		
-		new Window(jakiGatunek(tab,pomiary),"100");
+		new Window(jakiGatunek(tab,pomiary));
 	}
 	
 	

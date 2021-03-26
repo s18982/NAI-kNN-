@@ -25,8 +25,7 @@ public class Window {
 	JLabel lab5;
 	JLabel lab6;
 	
-	
-	public Window(String odp, String skut) {
+	public Window() {
 		Window = new JFrame("Start");
 		Window.setLayout(new BorderLayout());
 		
@@ -49,8 +48,7 @@ public class Window {
 		lab4 = new JLabel("szerokosc platka: ");
 		tp4 = new JTextPane();
 		
-		lab5 = new JLabel("Rezultat: "+odp);
-		lab6 = new JLabel("Skutecznosc: "+skut);
+		lab5 = new JLabel("Rezultat: ");
 		
 		
 		
@@ -58,8 +56,7 @@ public class Window {
 		
 		SwingUtilities.invokeLater(()->{
 			butWyj.addActionListener(e->{
-				Window.dispose();
-				Window.setVisible(false);
+				System.out.println("ok");
 			});
 			
 			but.addActionListener(e->{
@@ -81,13 +78,12 @@ public class Window {
 		panel1.add(lab4,BorderLayout.AFTER_LAST_LINE);
 		panel1.add(tp4,BorderLayout.AFTER_LAST_LINE);
 		
-		panel2.add(lab5,BorderLayout.NORTH);
-		panel2.add(lab6,BorderLayout.SOUTH);
+		panel2.add(lab5);
 		
 		Window.add(panel,BorderLayout.SOUTH);
 		Window.add(panel1,BorderLayout.NORTH);
 		Window.add(panel2,BorderLayout.CENTER);
-		Window.setSize(1080,180);
+		Window.setSize(1080,380);
 		Window.setLocationByPlatform(true);
 		
 		Window.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);

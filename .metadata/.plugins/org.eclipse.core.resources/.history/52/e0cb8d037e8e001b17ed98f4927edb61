@@ -11,7 +11,7 @@ public class Window {
 	JPanel panel1;
 	JPanel panel2;
 	
-	JButton butWyj;
+	JButton button;
 	JButton but;
 	
 	JTextPane tp1;
@@ -23,10 +23,8 @@ public class Window {
 	JTextPane tp4;
 	JLabel lab4;
 	JLabel lab5;
-	JLabel lab6;
 	
-	
-	public Window(String odp, String skut) {
+	public Window() {
 		Window = new JFrame("Start");
 		Window.setLayout(new BorderLayout());
 		
@@ -37,8 +35,8 @@ public class Window {
 		panel2 = new JPanel();
 		panel2.setLayout(new FlowLayout());
 		
-		butWyj = new JButton("Wyjscie");
-		but = new JButton("Sprawdz");
+		button = new JButton("Ok");
+		but = new JButton("Oki");
 		
 		lab1 = new JLabel("dlugosc liscia: ");
 		tp1 = new JTextPane();
@@ -49,17 +47,13 @@ public class Window {
 		lab4 = new JLabel("szerokosc platka: ");
 		tp4 = new JTextPane();
 		
-		lab5 = new JLabel("Rezultat: "+odp);
-		lab6 = new JLabel("Skutecznosc: "+skut);
-		
 		
 		
 		
 		
 		SwingUtilities.invokeLater(()->{
-			butWyj.addActionListener(e->{
-				Window.dispose();
-				Window.setVisible(false);
+			button.addActionListener(e->{
+				System.out.println("ok");
 			});
 			
 			but.addActionListener(e->{
@@ -69,8 +63,8 @@ public class Window {
 		
 		
 		
-		panel.add(but,BorderLayout.WEST);
-		panel.add(butWyj,BorderLayout.EAST);
+		panel.add(but,BorderLayout.EAST);
+		panel.add(button,BorderLayout.WEST);
 		
 		panel1.add(lab1,BorderLayout.AFTER_LAST_LINE);
 		panel1.add(tp1,BorderLayout.AFTER_LAST_LINE);
@@ -81,13 +75,12 @@ public class Window {
 		panel1.add(lab4,BorderLayout.AFTER_LAST_LINE);
 		panel1.add(tp4,BorderLayout.AFTER_LAST_LINE);
 		
-		panel2.add(lab5,BorderLayout.NORTH);
-		panel2.add(lab6,BorderLayout.SOUTH);
+		panel2.add(lab5);
 		
 		Window.add(panel,BorderLayout.SOUTH);
 		Window.add(panel1,BorderLayout.NORTH);
 		Window.add(panel2,BorderLayout.CENTER);
-		Window.setSize(1080,180);
+		Window.setSize(1080,380);
 		Window.setLocationByPlatform(true);
 		
 		Window.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);

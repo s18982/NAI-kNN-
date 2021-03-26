@@ -81,7 +81,7 @@ public class Window {
 		panel1.add(lab4,BorderLayout.AFTER_LAST_LINE);
 		panel1.add(tp4,BorderLayout.AFTER_LAST_LINE);
 		
-		panel2.add(lab5,BorderLayout.NORTH);
+		panel2.add(lab5);
 		panel2.add(lab6,BorderLayout.SOUTH);
 		
 		Window.add(panel,BorderLayout.SOUTH);
