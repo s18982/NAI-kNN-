@@ -13,7 +13,6 @@ public class Window {
 	
 	JButton butWyj;
 	JButton but;
-	JButton butZer;
 	
 	JTextPane tp1;
 	JLabel lab1;
@@ -40,7 +39,6 @@ public class Window {
 		
 		butWyj = new JButton("Wyjscie");
 		but = new JButton("Sprawdz");
-		butZer = new JButton("Wyczysc");
 		
 		lab1 = new JLabel("dlugosc liscia: ");
 		tp1 = new JTextPane();
@@ -64,29 +62,15 @@ public class Window {
 				Window.setVisible(false);
 			});
 			
-			butZer.addActionListener(e->{
-				Window.setVisible(false);
-				Window.dispose();
-				new Window("","");
-			});
-			
 			but.addActionListener(e->{
-				/*
-				 1. pobrac dane z panelow tekstowych 
-				 2. sprawdzic czy double
-				 3. Przechowaæ w polach
-				 4. Przekazac do Main double
-				 5. Wyliczyc i wyswietlic
-				 
-				 */
-				
+				//Window.setVisible(false);
+				Window.enable();;
 			});
 		});
 		
 		
 		
 		panel.add(but,BorderLayout.WEST);
-		panel.add(butZer,BorderLayout.CENTER);
 		panel.add(butWyj,BorderLayout.EAST);
 		
 		panel1.add(lab1,BorderLayout.AFTER_LAST_LINE);

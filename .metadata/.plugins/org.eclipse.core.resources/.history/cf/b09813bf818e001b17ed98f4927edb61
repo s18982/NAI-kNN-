@@ -66,20 +66,10 @@ public class Window {
 			
 			butZer.addActionListener(e->{
 				Window.setVisible(false);
-				Window.dispose();
 				new Window("","");
 			});
 			
 			but.addActionListener(e->{
-				/*
-				 1. pobrac dane z panelow tekstowych 
-				 2. sprawdzic czy double
-				 3. Przechowaæ w polach
-				 4. Przekazac do Main double
-				 5. Wyliczyc i wyswietlic
-				 
-				 */
-				
 			});
 		});
 		
