@@ -1,5 +1,8 @@
 package NAI01;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Pomiar {
 		double dlLiscia;
 		double szerLiscia;

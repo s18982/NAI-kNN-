@@ -1,10 +1,13 @@
 package NAI01;
 
 import java.awt.*;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
-public class Window {
+public class Window{
 	
 	JFrame Window;
 	JPanel panel;
@@ -13,7 +16,6 @@ public class Window {
 	
 	JButton butWyj;
 	JButton but;
-	JButton butZer;
 	
 	JTextPane tp1;
 	JLabel lab1;
@@ -23,8 +25,11 @@ public class Window {
 	JLabel lab3;
 	JTextPane tp4;
 	JLabel lab4;
-	JLabel lab5;
-	JLabel lab6;
+	
+	double d1;
+	double d2;
+	double d3;
+	double d4;
 	
 	
 	public Window(String odp, String skut) {
@@ -40,7 +45,6 @@ public class Window {
 		
 		butWyj = new JButton("Wyjscie");
 		but = new JButton("Sprawdz");
-		butZer = new JButton("Wyczysc");
 		
 		lab1 = new JLabel("dlugosc liscia: ");
 		tp1 = new JTextPane();
@@ -49,44 +53,20 @@ public class Window {
 		lab3 = new JLabel("dlugosc platka: ");
 		tp3 = new JTextPane();
 		lab4 = new JLabel("szerokosc platka: ");
-		tp4 = new JTextPane();
-		
-		lab5 = new JLabel("Rezultat: "+odp);
-		lab6 = new JLabel("Skutecznosc: "+skut);
-		
-		
-		
-		
-		
+		tp4 = new JTextPane();	
+			
+				
 		SwingUtilities.invokeLater(()->{
 			butWyj.addActionListener(e->{
 				Window.dispose();
 				Window.setVisible(false);
 			});
 			
-			butZer.addActionListener(e->{
-				Window.setVisible(false);
-				Window.dispose();
-				new Window("","");
-			});
-			
-			but.addActionListener(e->{
-				/*
-				 1. pobrac dane z panelow tekstowych 
-				 2. sprawdzic czy double
-				 3. Przechowaæ w polach
-				 4. Przekazac do Main double
-				 5. Wyliczyc i wyswietlic
-				 
-				 */
-				
-			});
 		});
 		
 		
 		
 		panel.add(but,BorderLayout.WEST);
-		panel.add(butZer,BorderLayout.CENTER);
 		panel.add(butWyj,BorderLayout.EAST);
 		
 		panel1.add(lab1,BorderLayout.AFTER_LAST_LINE);
@@ -97,9 +77,7 @@ public class Window {
 		panel1.add(tp3,BorderLayout.AFTER_LAST_LINE);
 		panel1.add(lab4,BorderLayout.AFTER_LAST_LINE);
 		panel1.add(tp4,BorderLayout.AFTER_LAST_LINE);
-		
-		panel2.add(lab5,BorderLayout.NORTH);
-		panel2.add(lab6,BorderLayout.SOUTH);
+
 		
 		Window.add(panel,BorderLayout.SOUTH);
 		Window.add(panel1,BorderLayout.NORTH);
@@ -110,5 +88,6 @@ public class Window {
 		Window.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         Window.setVisible(true);
 	}
+	
 	
 }

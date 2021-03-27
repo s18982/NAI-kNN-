@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
+import javax.swing.SwingUtilities;
+
 public class Main {
 	
 	static String strTrain;
@@ -85,20 +87,56 @@ public class Main {
 		for(Pomiar p: daneTest) {
 			double wek[] = {p.getDlLiscia(),p.getSzerLiscia(),p.getDlPlatka(),p.getSzerPlatka()};
 			
-			System.out.println(z+1+": "+jakiGatunek(wek,pomiary));
+			//System.out.println(z+1+": "+jakiGatunek(wek,pomiary));
 			
 			if(jakiGatunek(wek,pomiary).equals(daneTest.get(z).getGatunek()))
 				dobreOdp++;			
 			
 			z++;
 		}
+
+		// Reakcja na przycisk "sprawdz" ==========================================================================
 		
-		System.out.println("Skutecznosc: "+dobreOdp+"/"+daneTest.size());
+		int dO = dobreOdp;
 		
-		double[] tab = {1.7,8.9,0.3,6.1};
+		Window w =new Window("","");		
+		SwingUtilities.invokeLater(()->{
+			
+			
+			w.but.addActionListener(e->{
+				
+				try{
+				double d1 = Double.parseDouble(w.tp1.getText());
+				double d2 = Double.parseDouble(w.tp2.getText());
+				double d3 = Double.parseDouble(w.tp3.getText());
+				double d4 = Double.parseDouble(w.tp4.getText());
+				double tab[] = {d1,d2,d3,d4};
+				
+				
+				System.out.println(jakiGatunek(tab,pomiary));
+				String s = String.valueOf(dO);	
+				s=s+"/45";
+				
+				
+				new ResultWindow(jakiGatunek(tab,pomiary),s);
+				}catch(Exception ex) {
+					System.err.println("Niepoporawne dane");
+					new ResultWindow("Niepoporawne dane","");
+				}
+			});
+		});
 		
-		new Window(jakiGatunek(tab,pomiary),"100");
+	
+	
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	public static String jakiGatunek(double[] wektor, ArrayList<Pomiar> pomiary) {
